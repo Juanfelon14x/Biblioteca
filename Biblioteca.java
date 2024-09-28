@@ -145,7 +145,7 @@ public class Biblioteca {
     /**
      * 3.4
      * Metodo alternativo para agregar un libro, sobreescribiendolo en la posicion de otro
-     * @param libronuevo un libro que no esté en la base de datos de la biblioteca
+     * @param libronuevo un libro que no exista en la base de datos de la biblioteca
      * @param libroacambiar un libro existente a eliminar
      */
     public void reemplazarLibro(Libro libronuevo, Libro libroacambiar){
@@ -206,7 +206,7 @@ public class Biblioteca {
         return centinela;
     }
     /*
-     * Metodo que, ya habiendo creado un prestamo, hace efectiva la agregacion del estudiante y 
+     * Metodo para que una vez emitido un prestamo, se realize la agregacion del estudiante  
      */
     public void agregarPrestamoBiblioteca(Prestamo prestamonuevo) {
         if (verificarPrestamo(prestamonuevo.getCodigo()) == false) {
@@ -227,7 +227,7 @@ public class Biblioteca {
         }
     }
     /*
-     * Metodo para entregar un prestamo, es decir, elminarlo de todas las listas en donde esté,
+     * Metodo para saldar un prestamo, es decir, elminarlo de todas las listas en donde esté,
      * actualizar el subtotal y sumarlo a las ganancias de la biblioteca
      */
     public void entregarPrestamo(Prestamo prestamobuscado){
@@ -252,7 +252,7 @@ public class Biblioteca {
         System.out.println(mensaje);
     }
     public void mostrarprestamosBibliotecarios(){
-        String prestamos = "Los empleados y sos respectivos prestamos son:" + "\n";
+        String prestamos = "Los empleados que han adquirido prestamos son:" + "\n";
         for(Bibliotecario bibliotecario : bibliotecarios){
             prestamos += bibliotecario.getNombre() + " = " + bibliotecario.getPrestamos().size() + "\n";
         }
