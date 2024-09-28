@@ -252,7 +252,7 @@ public class Biblioteca {
         System.out.println(mensaje);
     }
     public void mostrarprestamosBibliotecarios(){
-        String prestamos = "Los empleados y sos respectivos prestamos son:" + "\n";
+        String prestamos = "Los empleados que han adquirido prestamos son:" + "\n";
         for(Bibliotecario bibliotecario : bibliotecarios){
             prestamos += bibliotecario.getNombre() + " = " + bibliotecario.getPrestamos().size() + "\n";
         }
