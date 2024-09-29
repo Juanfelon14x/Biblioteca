@@ -14,3 +14,71 @@ public class Biblioteca {
     private double ganancia = 0;
     private double deuda = 0;
     private int cantidadLibros = 0;
+
+    /**
+     *  Getters y Setters de la clase biblioteca
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Collection<Estudiante> getEstudiantes() {
+        return estudiantes;
+    }
+
+    public void setEstudiantes(LinkedList<Estudiante> estudiantes) {
+        this.estudiantes = estudiantes;
+    }
+
+    public LinkedList<Bibliotecario> getBibliotecarios() {
+        return bibliotecarios;
+    }
+
+    public void setBibliotecarios(LinkedList<Bibliotecario> bibliotecarios) {
+        this.bibliotecarios = bibliotecarios;
+    }
+
+    public LinkedList<Prestamo> getPrestamos() {
+        return prestamos;
+    }
+
+    public void setPrestamos(LinkedList<Prestamo> prestamos) {
+        this.prestamos = prestamos;
+    }
+
+    public LinkedList<Libro> getLibros() {
+        return libros;
+    }
+
+    public void setLibros(LinkedList<Libro> libros) {
+        this.libros = libros;
+    }
+
+    public double getGanancia() {
+        return ganancia;
+    }
+
+    public void setDeuda(double deuda) {
+        this.deuda = deuda;
+    }
+
+    public double getDeuda() {
+        return deuda;
+    }
+
+    public void setGanancia(double ganancia) {
+        this.ganancia = ganancia;
+    }
+
+    public int getCantidadLibros() {
+        return cantidadLibros;
+    }
+
+    public void setCantidadLibros(int cantidadLibros) {
+        this.cantidadLibros = cantidadLibros;
+    }
+  
