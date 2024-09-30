@@ -98,4 +98,36 @@ public class Biblioteca {
     public void setCantidadLibros(int cantidadLibros) {
         this.cantidadLibros = cantidadLibros;
     }
-  
+
+  /**
+     * toString de la clase biblioteca, en donde, en lugar de mostrar cada lista de sus atributos, muestra
+     * la cantidad de elementos de estas, por cuestion de pruebas y con el fin de evitar un error ciclico
+     * que muestra los las listas anidadas de las listas de forma indefinida
+     */
+    @Override
+    public String toString() {
+        return "\n\nBiblioteca [nombre=" + nombre + ", estudiantes=" + estudiantes.size() + ", bibliotecarios=" + bibliotecarios.size()
+                + ", prestamos=" + prestamos.size() + ", libros=" + libros.size() + ", ganancia=" + ganancia + ", cantidadLibros="
+                + cantidadLibros + "]";
+    }
+
+//---------------------------------------------------Libros--------------------------------------------------------//
+//----------------------------------Gestion global-----------------------------------//
+
+    /**
+     * Metodo para verificar la existencia de un libro en la lista de libros de la biblioteca
+     * - si no hay un libro con el mismo codigo que el ingresado el centinela es false
+     * - si hay un libro con el mismo codigo que el ingresado el centinela es true
+     * @param codigo codigo del libro a verificar
+     * @return el centinela de tipo booleano
+     */
+    public boolean verificarLibro(String codigo) {
+        boolean centinela = false;
+        for (Libro libro : libros) {
+            if (libro.getCodigo().equals(codigo)) {
+                centinela = true;
+            }
+        }
+        return centinela;
+    }
+}
