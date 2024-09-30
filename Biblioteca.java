@@ -197,3 +197,19 @@ public class Biblioteca {
         libros.set(libros.indexOf(libroacambiar), libronuevo);
     }
 //--------------------------------------------------Estudiante-----------------------------------------------------//
+/**
+     * Metodo para verificar la existencia de un estudiante en la lista de estudiantes de la biblioteca
+     * - si no hay un estudiante con el mismo codigo que el ingresado el centinela es false
+     * - si hay un estudiante con el mismo codigo que el ingresado el centinela es true
+     * @param cedula cedula del estudiante a verificar
+     * @return el centinela de tipo booleano
+     */
+    public boolean verificarEstudiante(String cedula) {
+        boolean centinela = false;
+        for (Estudiante estudiante : estudiantes) {
+            if (estudiante.getCedula().equals(cedula)) {
+                centinela = true;
+            }
+        }
+        return centinela;
+    }
