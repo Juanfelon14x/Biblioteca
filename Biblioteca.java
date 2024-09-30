@@ -222,3 +222,12 @@ public class Biblioteca {
             estudiantes.add(estudiante);
         }
     }
+/**
+     * Metodo para eliminar un estudiante verificando que exista
+     * @param estudiante estudiante a eliminar
+     */
+    public void eliminarEstudiante(Estudiante estudiante) {
+        if (verificarLibro(estudiante.getCedula()) == true) {
+            estudiantes.remove(estudiante);
+        }
+    }
