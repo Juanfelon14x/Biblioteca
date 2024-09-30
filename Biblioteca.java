@@ -252,3 +252,21 @@ public class Biblioteca {
             bibliotecarios.remove(bibliotecario);
         }
     }
+//---------------------------------------------------Prestamo-----------------------------------------------------//
+
+    /**
+     * Metodo para verificar la existencia de un prestamo en la lista de prestamos de la biblioteca
+     * - si no hay un prestamo con el mismo codigo que el ingresado el centinela es false
+     * - si hay un prestamo con el mismo codigo que el ingresado el centinela es true
+     * @param codigo codigo del prestamo a verificar
+     * @return el centinela de tipo booleano
+     */
+    public boolean verificarPrestamo(String codigo) {
+        boolean centinela = false;
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.getCodigo().equals(codigo)) {
+                centinela = true;
+            }
+        }
+        return centinela;
+    }
