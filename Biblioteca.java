@@ -98,4 +98,17 @@ public class Biblioteca {
     public void setCantidadLibros(int cantidadLibros) {
         this.cantidadLibros = cantidadLibros;
     }
+/**
+     * toString de la clase biblioteca, en donde, en lugar de mostrar cada lista de sus atributos, muestra
+     * la cantidad de elementos de estas, por cuestion de pruebas y con el fin de evitar un error ciclico
+     * que muestra los las listas anidadas de las listas de forma indefinida
+     */
+    @Override
+    public String toString() {
+        return "\n\nBiblioteca [nombre=" + nombre + ", estudiantes=" + estudiantes.size() + ", bibliotecarios=" + bibliotecarios.size()
+                + ", prestamos=" + prestamos.size() + ", libros=" + libros.size() + ", ganancia=" + ganancia + ", cantidadLibros="
+                + cantidadLibros + "]";
+    }
+}
+
   
