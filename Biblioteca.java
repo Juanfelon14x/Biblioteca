@@ -213,3 +213,12 @@ public class Biblioteca {
         }
         return centinela;
     }
+/**
+     * Metodo para agregar un estudiante verificando que no exista
+     * @param estudiante estudiante a agregar
+     */
+    public void agregarEstudiante(Estudiante estudiante) {
+        if (verificarLibro(estudiante.getCedula()) == false) {
+            estudiantes.add(estudiante);
+        }
+    }
