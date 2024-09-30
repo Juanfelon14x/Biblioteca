@@ -1,4 +1,4 @@
-import java.util.LinkedList;
+
 import java.time.LocalDate;
 public class app {
     public static void main(String[] args) {
@@ -32,8 +32,6 @@ public class app {
 
                 prestamog.agregarDetallePrestamo(detallePrestamoj);
                 biblioteca1.agregarLibro(librog);
-                biblioteca1.agregarPrestamoBiblioteca(prestamog);
-                biblioteca1.entregarPrestamo(prestamog);
             
             LocalDate   fechapublicacionlibro1 = LocalDate.of(2024, 5, 6);
             Libro libro1= new Libro("2342", "234563", "juan valdez", "planeta", "quijote", fechapublicacionlibro1, false, 24);
@@ -48,11 +46,9 @@ public class app {
             System.out.println(bibliotecarioi);
         }
         System.out.println(biblioteca1);
-        System.out.println(biblioteca1.dineroapagarbibliotecarios());
-        biblioteca1.actualizarganancia();
         System.out.println(biblioteca1.getGanancia());
     }
-}
+
     }
     
-}
+
