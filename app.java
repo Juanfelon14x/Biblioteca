@@ -40,7 +40,7 @@ public class app {
             biblioteca1.mostrardatoslibro("2342");
             biblioteca1.mostrarprestamoslibro("quijote");
             biblioteca1.reemplazarLibro(librog, libro1);
-            
+            biblioteca1.eliminarLibro(libro1);
             
             }
             System.out.println(bibliotecarioi);
