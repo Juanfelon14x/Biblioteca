@@ -270,3 +270,30 @@ public class Biblioteca {
         }
         return centinela;
     }
+/**
+     * Metodo que agrega un prestamo y lo adiciona a los prestamos del estudiante y bibliotecario a los que esta asociado
+     * unicamente si las siguientes condiciones se cumplen:
+     * 
+     * - Si el prestamo que se quiera agregar no existe en la lista de prestamos de la biblioteca
+     * - Si el bibliotecario que tenga como atributo el prestamo, exista en la lista de bibliotecarios de la biblioteca
+     * - Si el estudiante que tenga como atributo el prestamo exista en la lista de estudiantes de la biblioteca
+     * - Si el libro de cada detalle del prestamo existe en la lista de libros de la biblioteca
+     * 
+     * por lo tanto antes de agregar un prestamo, los bibliotecarios, estudiantes y libros asociados se tienen que registrar en la biblioteca
+     * @param prestamonuevo el prestamo que se quiera agregar
+     */
+    public void agregarPrestamoBiblioteca(Prestamo prestamonuevo) {
+
+        if (verificarPrestamo(prestamonuevo.getCodigo()) == false && 
+        verificarBibliotecario(prestamonuevo.getBibliotecario().getCedula()) == true &&
+        verificarEstudiante(prestamonuevo.getEstudiante().getCedula()) == true)
+        {
+            for (DetallePrestamo detallePrestamo : prestamonuevo.getDetallePrestamos()) {
+                if (verificarLibro(detallePrestamo.getLibro().getCodigo()) == true) {
+                    prestamonuevo.getEstudiante().agregarPrestamoEstudiante(prestamonuevo);
+                    prestamonuevo.getBibliotecario().agregarPrestamoBibliotecario(prestamonuevo);
+                }
+            }
+            prestamos.add(prestamonuevo);
+        }
+    }
