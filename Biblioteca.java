@@ -297,3 +297,116 @@ public class Biblioteca {
             prestamos.add(prestamonuevo);
         }
     }
+/**
+     * 4.2
+     * Metodo para entregar un prestamo, es decir, elminarlo de las listas de prestamos de estudiante y bibliotecario,
+     * adicionarlo a los prestamos de historial de bibliotecario, actualizar el subtotal y sumarlo a las ganancias de la biblioteca
+     * @see #eliminarPrestamoBiblioteca(Prestamo)
+     * @param prestamo prestamo a entregar
+     */
+    public void entregarPrestamo(Prestamo prestamo){
+        int total = 0;
+        if (verificarPrestamo(prestamo.getCodigo()) == true) {
+            for (DetallePrestamo detallePrestamo : prestamo.getDetallePrestamos()) {
+                prestamo.actualizarSubtotal(detallePrestamo);
+                total += detallePrestamo.getSubTotal();
+            }
+            eliminarPrestamoBiblioteca(prestamo);
+            prestamo.getBibliotecario().agregarPrestamohistorialBibliotecario(prestamo);
+            setGanancia(getGanancia() + total);
+        }
+    }
+
+    /**
+     * 4.3
+     * Metodo para mostrar los datos de un prestamo cuyo codigo sea ingresado como parametro
+     * @param codigoelegido codigo del prestamo, tipo String
+     * @see #verificarPrestamo(String)
+     */
+        public void mostrardatosPrestamo(String codigoelegido){
+        String mensaje = "";
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.getCodigo().equals(codigoelegido)) {
+                mensaje = prestamo.toString();
+                break;
+            }
+        }
+        System.out.println(mensaje);
+    }
+
+    /**
+     * 4.5
+     * Metodo que genera una lista textual de todos los bibliotecarios y el numero de prestamos asociados al mismo
+     * 
+     * (muestra el nombre del bibliotecario por temas de prueba, aunque se puede mostrar cualquier otro atributo)
+     */
+    public void mostrarprestamosBibliotecarios(){
+        String prestamos = "Los empleados y sus respectivos prestamos son:" + "\n";
+        for(Bibliotecario bibliotecario : bibliotecarios){
+            prestamos += bibliotecario.getNombre() + " = " + bibliotecario.getPrestamos().size() + "\n";
+        }
+        System.out.println(prestamos);
+    }
+
+    /**
+     * 5.1
+     * Metodo que muestra una cadena de texto con el estudiante que hizo un mayor numero de prestamos
+     * y el número de prestamos realizados por el mismo
+     * 
+     * (muestra el nombre del estudiante por temas de prueba, aunque se puede mostrar cualquier otro atributo)
+     */
+    public void estudianteconmasprestamos(){
+        int prestamomayor = 0;
+        Estudiante estudiantemayor = null;
+        for (Estudiante estudiante : estudiantes) {
+            int contador = 0;
+            contador = estudiante.getPrestamos().size();
+
+            if (contador > prestamomayor) {
+                estudiantemayor = estudiante;
+                prestamomayor = contador;
+            }
+        }
+        System.out.println("el estudiante con el mayor número de prestamos es: " + 
+        estudiantemayor.getNombre() + " con " + prestamomayor + " prestamos");    
+    }
+
+    /**
+     * Metodo para actualizar las ganancias totales resultantes de hacerle el pago a los bibliotecarios
+     */
+    public void actualizarganancia(){
+        setDeuda(dineroapagarbibliotecarios());
+        setGanancia(getGanancia() - getDeuda());
+    }
+
+
+    /**
+     * 5.3
+     * Metodo que retorna el total de dinero a pagar a todos los bibliotecarios 
+     * 
+     * @bonificacion1 es el dinero que se le da al bibliotecario, el cuál es el 20% de cada subtotal del
+     * detalle de prestamo de cada prestamo
+     * 
+     * @bonificacion2 es la bonificacion1 más un 0.2% por cada año de antiguedad que tenga el bibliotecario
+     * 
+     * @dineroapagar es la bonificacion 2 sumada sucesivamente para dar un unico valor totalizado
+     * 
+     * @return dineroapagar
+     */
+    public double dineroapagarbibliotecarios(){
+        double bonificacion1 = 0;
+        double bonificacion2 = 0;
+        double dineroapagar = 0;
+        for (Bibliotecario bibliotecario : bibliotecarios) {
+            for (Prestamo prestamo : bibliotecario.getPrestamoshistorial()) {
+                for (DetallePrestamo detallePrestamo : prestamo.getDetallePrestamos()) {
+                    prestamo.actualizarSubtotal(detallePrestamo);
+                    bonificacion1 = 0.2 * detallePrestamo.getSubTotal();
+                    bonificacion2 = bonificacion1 + (0.02 * bibliotecario.getAntiguedad());
+                    dineroapagar += bonificacion2;
+                }
+            }
+        }
+        return dineroapagar;
+    }
+}
